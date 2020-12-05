@@ -550,6 +550,7 @@ to_wml.table_colwidths <- function(x, add_ns = FALSE, ...) {
 #' @param colwidths column widths defined by [table_colwidths()]
 #' @param align table alignment (one of left, center or right)
 #' @param tcf conditional formatting settings defined by [table_conditional_formatting()]
+#' @param caption table caption
 #' @examples
 #' prop_table()
 #' to_wml(prop_table())
