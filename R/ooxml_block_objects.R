@@ -559,7 +559,8 @@ prop_table <- function(style = NA_character_, layout = table_layout(),
                        stylenames = table_stylenames(),
                        colwidths = table_colwidths(),
                        tcf = table_conditional_formatting(),
-                       align = "center"){
+                       align = "center",
+                       caption=caption){
 
 
   z <- list(
@@ -568,7 +569,8 @@ prop_table <- function(style = NA_character_, layout = table_layout(),
     width = width,
     colsizes = colwidths,
     stylenames = stylenames,
-    tcf = tcf, align = align
+    tcf = tcf, align = align,
+    caption=caption
   )
   class(z) <- c("prop_table")
   z
@@ -610,6 +612,7 @@ to_wml.prop_table <- function(x, add_ns = FALSE, base_document = NULL, ...) {
          tbl_layout,
          sprintf( "<w:jc w:val=\"%s\"/>", x$align ),
          width, tcf,
+         if(!is.null(x$caption)) "<w:tblCaption w:val=\"", x$caption, "\"/>",
          "</w:tblPr>",
          if(x$layout$type %in% "fixed") colwidths
          )
